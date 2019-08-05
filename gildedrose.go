@@ -1,7 +1,5 @@
 package gildedrose
 
-type Behavior func(quality int, sellIn int) int
-
 type Item struct {
 	Name            string
 	Quality, SellIn int

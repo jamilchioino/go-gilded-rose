@@ -2,10 +2,10 @@
 
 ## Setup
 
-This repository includes a problem file and a specs file.
+This repository includes a problem file and a test file.
 
-1. Before starting, make sure you [Go](https://golang.org/dl/) installed and configured properly.
-2. To check your work, please execute `go test` in terminal in the root directory.
+1. Before starting, make sure you have [Go](https://golang.org/dl/) installed and configured properly.
+2. To check your work, please execute `go test` in the terminal in the root directory.
 
 ## Rules
 
