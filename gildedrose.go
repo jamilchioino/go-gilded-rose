@@ -3,35 +3,25 @@ package gildedrose
 type Behavior func(quality int, sellIn int) int
 
 type Item struct {
-	Name            ItemType
+	Name            string
 	Quality, SellIn int
 }
 
-type ItemType string
-
-const (
-	Normal        ItemType = "Normal"
-	Sulfuras      ItemType = "Sulfuras, Hand of Ragnaros"
-	AgedBrie      ItemType = "Aged Brie"
-	BackstagePass ItemType = "Backstage Pass"
-	Conjured      ItemType = "Conjured"
-)
-
-func NewItem(itemType ItemType, quality int, sellIn int) *Item {
-	return &Item{itemType, quality, sellIn}
+func NewItem(itemName string, quality int, sellIn int) *Item {
+	return &Item{itemName, quality, sellIn}
 }
 
 func (item *Item) Tick() {
-	if item.Name != AgedBrie && item.Name != BackstagePass {
+	if item.Name != "Aged Brie" && item.Name != "Backstage Pass" {
 		if item.Quality > 0 {
-			if item.Name != Sulfuras {
+			if item.Name != "Sulfuras, Hand of Ragnaros" {
 				item.Quality = item.Quality - 1
 			}
 		}
 	} else {
 		if item.Quality < 50 {
 			item.Quality = item.Quality + 1
-			if item.Name == BackstagePass {
+			if item.Name == "Backstage Pass" {
 				if item.SellIn < 11 {
 					if item.Quality < 50 {
 						item.Quality = item.Quality + 1
@@ -46,15 +36,15 @@ func (item *Item) Tick() {
 		}
 	}
 
-	if item.Name != Sulfuras {
+	if item.Name != "Sulfuras, Hand of Ragnaros" {
 		item.SellIn = item.SellIn - 1
 	}
 
 	if item.SellIn < 0 {
-		if item.Name != AgedBrie {
-			if item.Name != BackstagePass {
+		if item.Name != "Aged Brie" {
+			if item.Name != "Backstage Pass" {
 				if item.Quality > 0 {
-					if item.Name != Sulfuras {
+					if item.Name != "Sulfuras, Hand of Ragnaros" {
 						item.Quality = item.Quality - 1
 					}
 				}
